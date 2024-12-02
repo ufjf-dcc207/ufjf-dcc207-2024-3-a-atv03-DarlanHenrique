@@ -2,24 +2,37 @@
     border: 1px solid #ccc;
     box-shadow: 0.1em 0.1em 2.2em;
     padding: 0.5em;
+    font-weight: 600;
     border-radius: 0.5em;
     margin: 1em;
-}
+    display: grid;
+    grid-template-areas: 
+    "icon name name"
+    "icon weight weight"
+    "icon . extinct";
+;
 
-.animal :nth-child(1) {
-    font-size: 3em;
-}
-
-.animal :nth-child(2) {
-    font-weight: 600;
-}
-
-.animal :nth-child(3) {
-    opacity: 0.6;
-}
-
-.animal :nth-child(4) {
-    background-color: darkred;
-    color: red;
-    min-height: 1em;
+    .icon{
+        grid-area: icon;
+        place-content: center;
+        font-size: 4em;
+    }
+    .name {
+        grid-area: name;
+        font-weight: 900;
+        font-variant: small-caps;
+    }
+    .weight {
+        grid-area: weight;
+        color: gray
+    }
+    .extinct {
+        grid-area: extinct;
+        text-transform: uppercase;
+        background-color: darkred;
+        color: white;
+        font-size: 0.75em;
+        place-content: center;
+        min-height: 1em;
+    }
 }
