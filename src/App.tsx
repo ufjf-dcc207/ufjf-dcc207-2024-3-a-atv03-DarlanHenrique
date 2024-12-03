@@ -4,8 +4,9 @@ import Animal from './Animal'
 function App() {
   return (
       <div className='app'>
-        <Animal icon="🦖" name="Dinossaur" weight={530} extinct={true} />
-        <Animal icon="🦁" name="Lion" weight={190.37} extinct={false} />
+        <Animal icon="🦖" name="Dinossauro" weight={-1} extinct />
+        <Animal icon="🦁" name="Leão" weight={190.37} />
+        <Animal icon="🐬" name="Golfinho-do-rio-chinês" weight={67.43} extinct />
       </div>
   )
 }
