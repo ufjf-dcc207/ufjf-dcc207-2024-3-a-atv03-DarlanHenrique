@@ -1,0 +1,19 @@
+.exhibition {
+    font-weight: 900;
+    padding: 1em;
+    display: grid;
+    grid-template-areas: "location start end";
+
+    .start {
+        color: darkgreen;
+        grid-area: start;
+    }
+    .end {
+        color: darkred;
+        grid-area: end;
+    }
+    .location {
+        text-decoration: underline;
+        grid-area: location;
+    }
+}
