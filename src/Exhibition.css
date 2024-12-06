@@ -2,7 +2,8 @@
     font-weight: 900;
     padding: 1em;
     display: grid;
-    grid-template-areas: "location start end";
+    grid-template-areas: "location start end"
+    "animals animals animals";
 
     .start {
         color: darkgreen;
@@ -15,5 +16,11 @@
     .location {
         text-decoration: underline;
         grid-area: location;
+    }
+    .animals {
+        grid-area: animals;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1em;
     }
 }
