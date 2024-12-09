@@ -1,11 +1,11 @@
 import "./App.css";
 import Animal from "./Animal";
 import Exhibition from "./Exhibition";
-import { ReactNode } from "react";
 
-type animalType = [string, string, number, boolean];
+type ExhibitionTuplaType = [string, string, string, AnimalTuplaType[]];
+type AnimalTuplaType = [string, string, number, boolean];
 
-const ANIMAIS: animalType[] = [
+const ANIMAIS: AnimalTuplaType[] = [
   ["🦅", "Águia", 6.35, false],
   ["🐘", "Elefante", 5400, false],
   ["🦒", "Girafa", 800, false],
@@ -16,34 +16,37 @@ const ANIMAIS: animalType[] = [
   ["🐬", "Golfinho-do-rio-chinês", 67.43, true],
 ];
 
-function App() {
-  const exA1: ReactNode[] = [];
-  const exB1: ReactNode[] = ANIMAIS.map((animal) => <Animal
-      key={animal[1]}
-      icon={animal[0]}
-      name={animal[1]}
-      weight={animal[2]}
-      extinct={animal[3]}
-    />
-  );
+const exA1: AnimalTuplaType[] = ANIMAIS.filter((animal) => animal[2] < 500 && animal[2] > 0);
+const exB1: AnimalTuplaType[] = ANIMAIS.filter((animal) => animal[2] >= 500)
+const exC1: AnimalTuplaType[] = ANIMAIS.filter((animal) => animal[2] < 0 || animal[3]);
 
+const EXHIBITION: Array<ExhibitionTuplaType> = [
+    ["2024-12-06T08:00:00-03:00", "2024-12-06T12:00:00-03:00", "A1", exA1],
+    ["2024-12-06T13:00:00-03:00", "2024-12-06T17:00:00-03:00", "B1", exB1],
+    ["2024-12-06T18:00:00-03:00", "2024-12-06T22:00:00-03:00", "C1", exC1],
+];
+
+function App() {
   return (
     <div className="app">
-      <Exhibition
-        start={new Date("2024-12-06T08:00:00-03:00")}
-        end={new Date("2024-12-06T12:00:00-03:00")}
-        location="A1"
+      <h1>Exposição de Animais</h1>
+      {EXHIBITION.map((exhibition) =>(
+        <Exhibition
+          key={exhibition[2]}
+          start={new Date(exhibition[0])}
+          end={new Date(exhibition[1])}
+          location={exhibition[2]}
       >
-        {exA1}
+        {exhibition[3].map((animal) => <Animal
+          key={animal[1]}
+          icon={animal[0]}
+          name={animal[1]}
+          weight={animal[2]}
+          extinct={animal[3]}
+        />
+      )}
       </Exhibition>
-
-      <Exhibition
-        start={new Date("2024-12-06T13:00:00-03:00")}
-        end={new Date("2024-12-06T17:00:00-03:00")}
-        location="B1"
-      >
-        {exB1}
-      </Exhibition>
+      ))}
     </div>
   );
 }
